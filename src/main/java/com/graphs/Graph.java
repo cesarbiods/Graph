@@ -1,5 +1,7 @@
 package com.graphs;
 
+import org.jsoup.nodes.Element;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,28 +9,29 @@ import java.util.List;
  * Created by cesar on 4/16/17.
  */
 public class Graph {
-    private String baseurl;
-    private Node first;
+    public static final int DEPTH = 3;
+    public static final int LENGTH = 5;
+
     private List nodes;
 
     public Graph() {
         nodes = new ArrayList<Node>();
     }
 
-    public String getBaseurl() {
-        return baseurl;
+    public void generateGraph(Node n, int remainingDepth) {
+        n.generateEdges(LENGTH);
+        for (int i = 0; i < n.getEdges().size(); i++) {
+            nodes.add(n.getEdges().get(i).getDestination());
+        }
+        if (remainingDepth > 0) {
+            remainingDepth--;
+            for (int i = 0; i < n.getEdges().size(); i++) {
+                generateGraph(n.getEdges().get(i).getDestination(), remainingDepth);
+            }
+        }
     }
 
-    public void setBaseurl(String baseurl) {
-        this.baseurl = baseurl;
+    public List getNodes() {
+        return nodes;
     }
-
-    public Node getFirst() {
-        return first;
-    }
-
-    public void setFirst(Node first) {
-        this.first = first;
-    }
-
 }

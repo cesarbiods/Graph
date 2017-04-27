@@ -10,6 +10,8 @@ public class Main {
     public static void main(String[] args)  {
         String favorite = "/wiki/Metroid_Prime_3:_Corruption";
         Node test = new Node(favorite);
-        test.generateEdges();
+        Graph graph = new Graph();
+        graph.generateGraph(test, graph.DEPTH);
+
     }
 }
