@@ -15,18 +15,18 @@ import java.util.stream.Collectors;
  * Created by cesar on 4/16/17.
  */
 public class Node {
-    public static final String baseline = "https://en.wikipedia.org/wiki/";
+    public static final String BASELINE = "https://en.wikipedia.org/wiki/";
+    public static final int WIKIBEGINNING = 6;
     private Document doc;
     private List<Edge> edges;
-    public static final int wikiBeginning = 6;
 
     public Node(String current) {
         try {
             if (current.contains("#")) {
                 current = current.substring(0, current.indexOf("#"));
             }
-            String encoded = URLDecoder.decode(current.substring(wikiBeginning), "UTF-8");
-            doc = Jsoup.connect(baseline.concat(encoded)).get();
+            String encoded = URLDecoder.decode(current.substring(WIKIBEGINNING), "UTF-8");
+            doc = Jsoup.connect(BASELINE.concat(encoded)).get();
             edges = new ArrayList<>();
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,11 +51,17 @@ public class Node {
         if (link.attr("href").startsWith("/wiki/")) {
             if (!link.attr("href").contains("File:")) {
                 if (!link.attr("href").contains("Help:")) {
-                    return true;
+                    if (!link.attr("href").contains("redirect=no")) {
+                        return true;
+                    }
                 }
             }
         }
         return false;
+    }
+
+    public String getURL() {
+        return doc.location();
     }
 
     public Document getDoc() {
