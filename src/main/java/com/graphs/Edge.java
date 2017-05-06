@@ -5,10 +5,11 @@ package com.graphs;
  */
 public class Edge {
     private Node destination;
-    private int weight;
+    private double weight;
 
-    public Edge(Node n) {
+    public Edge(Node n, double w) {
         destination = n;
+        weight = w;
     }
 
     public Node getDestination() {
@@ -19,11 +20,11 @@ public class Edge {
         this.destination = destination;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 }

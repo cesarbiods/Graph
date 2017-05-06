@@ -13,7 +13,7 @@ import java.util.Set;
  */
 public class Graph {
     public static final int DEPTH = 3;
-    public static final int LENGTH = 4;
+    public static final int LENGTH = 3;
 
     private HashMap<String, Node> nodes;
 
