@@ -18,6 +18,7 @@ import java.util.Set;
 public class Node {
     public static final String BASELINE = "https://en.wikipedia.org/wiki/";
     public static final int WIKIBEGINNING = 6;
+
     private Document doc;
     private List<Edge> edges;
     private HashMap<String, Integer> wordfreq;
