@@ -12,7 +12,7 @@ import java.util.Set;
  * Created by cesar on 4/16/17.
  */
 public class Graph {
-    public static final int DEPTH = 3;
+    public static final int DEPTH = 2;
     public static final int LENGTH = 3;
 
     private HashMap<String, Node> nodes;
