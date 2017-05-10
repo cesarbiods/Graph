@@ -1,9 +1,11 @@
 package com.graphs;
 
+import java.io.Serializable;
+
 /**
  * Created by cesar on 4/16/17.
  */
-public class Edge {
+public class Edge implements Serializable{
     private Node destination;
     private double weight;
 
