@@ -5,6 +5,11 @@ import java.io.Serializable;
 /**
  * Created by cesar on 4/16/17.
  */
+
+/**
+ * this object models the edges of every node and the nodes at the end
+ * of such edges as well as the weight of the edge
+ */
 public class Edge implements Serializable{
     private Node destination;
     private double weight;

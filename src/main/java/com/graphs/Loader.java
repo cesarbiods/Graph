@@ -14,6 +14,11 @@ import java.util.List;
  */
 public class Loader {
     public static void main(String[] args)  {
+
+        /**
+         * this section creates, populates the graph, and compares its
+         * number of nodes with that of a spanning tree
+         */
         String favorite = "/wiki/Metroid";
         Node test = new Node(favorite);
         Graph graph = new Graph();
@@ -31,6 +36,11 @@ public class Loader {
                 .count();
         System.out.println("Regular graph nodes: " + count);
         System.out.println("Spanning tree nodes: " + graph.traverse());
+
+        /**
+         * this section takes the completed graph and serializes it
+         * to a file to be stored persistently
+         */
 
         try {
             FileOutputStream fileOut =

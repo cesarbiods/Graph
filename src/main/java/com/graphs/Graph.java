@@ -19,6 +19,12 @@ public class Graph implements Serializable{
         nodes = new HashMap<>();
     }
 
+    /**
+     * The methods writer and close simply write nodes to a file
+     * for use in a graph vizualization software. Used in the beginning
+     * to test the graph but completely irrelevant now
+     */
+
     PrintWriter writer;
     public void prepare() {
         try {
@@ -33,6 +39,17 @@ public class Graph implements Serializable{
         writer.println("}");
         writer.close();
     }
+
+    /**
+     * generates the graph from the root
+     * <p>
+     * The method gets the edges of the first node writes each the graph with a path key
+     * and the node value. Then it checks the pedth counter and if > 0 it calls the method on
+     * the edges of the edges of the current node until depth reaches zero
+     *
+     * @param  n  the node to be visited
+     * @param  remainingDepth  the depth counter for when to stop recursing
+     */
 
     public void generateGraph(Node n, int remainingDepth) {
         n.generateEdges(LENGTH);
@@ -49,6 +66,16 @@ public class Graph implements Serializable{
             }
         }
     }
+
+    /**
+     * Return the number of nodes in a spanning tree
+     * <p>
+     * The method gets the set of keys in the graph and adds only one instance of
+     * every node to a new list, effectively traversing the entire graph and generating
+     * a spannign tree, it then returns the number of nodes in the new list
+     *
+     * @return      the number of nodes on the spanning tree
+     */
 
     public int traverse() {
         Set<String> keys = nodes.keySet();
